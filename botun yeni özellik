@@ -1,0 +1,35 @@
+#arkadaşınız cool mu? botun kendi cevaba evet yada hayır şeklinde siz belirliyeceksiniz.
+
+import discord
+from discord.ext import commands
+
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'{bot.user} olarak giriş yaptık')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Merhaba {bot.user}! Ben bir botum!')
+
+@bot.group()
+async def cool (ctx):
+     " işte bu yukarıdaki (cool) kullanıcı gerçekten cool olup olmadığını cevap verir"
+     
+    if ctx.invoked_subcommand is None:
+        await ctx.send(f'No, {ctx.subcommand_passed} is no cool ')
+
+
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
+
+
+
+bot.run("MTEwNDExOTE2OTczNTIwNDkyNQ.GefJlx.43jDUPblgzxIIzOrGp9rBeYaK4hn2CWgqa1oKA")
+
