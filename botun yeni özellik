@@ -31,5 +31,5 @@ async def heh(ctx, count_heh = 5):
 
 
 
-bot.run("MTEwNDExOTE2OTczNTIwNDkyNQ.GefJlx.43jDUPblgzxIIzOrGp9rBeYaK4hn2CWgqa1oKA")
+bot.run("TOKEN")
 
