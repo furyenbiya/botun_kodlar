@@ -1,0 +1,43 @@
+import discord
+
+# ayricaliklar (intents) değişkeni botun ayrıcalıklarını depolayacak
+intents = discord.Intents.default()
+# Mesajları okuma ayrıcalığını etkinleştirelim
+intents.message_content = True
+# istemci (client) değişkeniyle bir bot oluşturalım ve ayrıcalıkları ona aktaralım
+client = discord.Client(intents=intents)
+
+@client.event
+async def on_ready():
+    print(f'{client.user} olarak giriş yaptık')
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('$merhaba'):
+        await message.channel.send("selam!")
+    elif message.content.startswith('$nasılsın'):
+        await message.channel.send("ben her zaman iyiyim")    
+    elif message.content.startswith('$senin ismin ne'):
+        await message.channel.send("ben botum beni sen tasarladın")
+    elif message.content.startswith('$evet doğru seni ben tasarladım'):
+        await message.channel.send("beni tasarladığın için teşekkür ediyorum")
+    elif message.content.startswith('$botlarla fgüzel vakit geçirin lütfen :)'):
+        await message.channel.send("evet katılıyorum :)")               
+    else:
+        await message.channel.send(message.content) 
+        
+client.run("TOKEN")
+
+#hangisi bot hangisi kullanıcı olduğu aşağıda örnekteki gibi fazlasını bile yapabilirsiniz :) !!!!!
+
+ if message.content.startswith('$kulanınıcın cevabı burasıdır'):
+        await message.channel.send("botun cevabı burasıdır")
+
+
+
+
+
+
+
