@@ -1,0 +1,27 @@
+import discord
+
+# ayricaliklar (intents) değişkeni botun ayrıcalıklarını depolayacak
+intents = discord.Intents.default()
+# Mesajları okuma ayrıcalığını etkinleştirelim
+intents.message_content = True
+# istemci (client) değişkeniyle bir bot oluşturalım ve ayrıcalıkları ona aktaralım
+client = discord.Client(intents=intents)
+
+@client.event
+async def on_ready():
+    print(f'{client.user} olarak giriş yaptık')
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('$selam'):
+        await message.channel.send("merhaba")
+
+    if message.content.startswith('$ dünya'):
+        await message.channel.send("Global warming is the long-term heating of Earth’s surface observed since the pre-industrial period (between 1850 and 1900) due to human activities, primarily fossil fuel burning, which increases heat-trapping greenhouse gas levels in Earth’s atmosphere. This term is not interchangeable with the term "climate change."")        
+    else:    
+    
+        await message.channel.send(message.content) 
+        
+client.run("MTEwNDExOTE2OTczNTIwNDkyNQ.GfmdBY.jUEkb0pemyxXcWqKhrTEGBmKFIqJzU9luxvMs8")
